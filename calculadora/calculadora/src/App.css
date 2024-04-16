@@ -1,3 +1,28 @@
 .calculadora{
-  
+  display: block;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #DC4C46;
+  width: 350px;
+  height: 500px;
+  border-radius: 25px;
+}
+/**todos los td de dentro de la clase calcularoda y tengan la etiqueta button*/
+.calculadora td button{
+  display: block;
+  width: 70px;
+  height: 70px;
+  font-size: 25px;
+}
+#resultado{
+  display: block;
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 50px;
+  width: 300px;
+  height: 100px;
+  line-height:100px;/*para que el texto sea del tamaño de la pantalla de resultados*/
+  background-color: white;
+  border-radius: 25px;
+  overflow-y: scroll;/*scroll por si el resultado es muy*/
 }

@@ -1,0 +1,37 @@
+/*formato de la pantalla*/
+main {
+  background-color: var(--fondo-calculadora);
+  aspect-ratio: 9/16; /*por cada 9 dieciseis abos tenemos una pantalla de telefono */
+  border-bottom: 1rem;
+  height: 95%;
+  min-height: 600px;
+  box-shadow: var(--box-shadow);
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /*se va a usar cuatro columnas y cada una va a tener 1 fracción */
+  gap: 1rem; /*Espaciado entre cada uno de los componentes entre los botones y la caja de texto, se usa para el grid*/
+}
+
+span {
+  /*Todos los spans que contiene el main*/
+  grid-column: span 4; /*se usa para que los span usen cuatro columnas cada uno y se ponga uno debajo del otro */
+  text-align: right;
+
+  padding: 0 0.5rem; /*arriba y abajo =>0px; hacia los lados=> .5rem*/
+}
+/*los span que contiene el main y con clase resultado*/
+span.resultado{
+    color: var(--secundario);
+    font-size: 3rem;
+    height: 3rem;
+}
+/*los span que contiene el main y con clase display*/
+
+span.display{
+   
+    font-size: 4rem;
+    height: 4rem;
+}

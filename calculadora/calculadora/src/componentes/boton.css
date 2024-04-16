@@ -1,0 +1,20 @@
+button {
+  border: none;
+  border-radius: 1rem;
+  background-color: var(--terciario);
+  font-size: 2rem;
+  aspect-ratio: 1 / 1;
+}
+/*Cuando el boton se encuentre activo se le ha hecho click encima */
+button:active {
+  transform: scale(1.02);
+}
+/*botón que pasa la clase gris*/
+button.gris{
+    background-color: var(--secundario);
+}
+/*botón que pasa la clase operación*/
+button.operacion{
+    background-color: var(--primario);
+    color: #fff;
+}

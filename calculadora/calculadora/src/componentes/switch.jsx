@@ -9,6 +9,7 @@ const Switch = () => {
     const handleChange =(e)=>setTheme(e.target.checked ? 'oscuro' : 'claro');
     //cuando se dispare el useEffect va a agregar la propiedad o la va a quitar 
     useEffect(()=>{
+        //document.body.setAttribute => cambia los estilos al body usando la clase "data-theme" 
         //theme => tendra el valor de la constate en ese momento del codigo
         //"data-theme" => es la clase para cambiar el color de las variables
         document.body.setAttribute("data-theme",theme)

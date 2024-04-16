@@ -12,6 +12,10 @@
   background-color: var(--fondo);/*usa la variable de fondo */
   color: var(--texto);
 }
+body{
+  background-color: var(--fondo);
+  color: var(--texto);
+}
 * {
   margin: 0;
   padding: 0;
@@ -21,4 +25,13 @@
   display: grid;
   place-items: center;
 }
-
+/*cuando exista "data-theme" y tenga el valor de "oscuro" modifica los valores de las variables*/
+[data-theme="oscuro"]{
+  --fondo: #F1F2F3;
+  --fondo-calculadora: #17171c;
+  --texto:#FFFFFF;
+  --primario:#4B5EFC;
+  --secundario:#4E505F;
+  --terciario:#2E2F38;
+  --box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+}

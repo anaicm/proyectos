@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./calculadora.css";
 import Boton from "./boton";
+import Switch from "./switch";
 
 const Calculadora = () => {
   const [data, setData] = useState({ operacion: "", resultado: "" });
@@ -20,33 +21,36 @@ const Calculadora = () => {
     if (data.operacion.length >= 10) return; //condicional para solo tener un maximo de 10 digitos
     if (valor === "+/-" && data.operacion === "") return; //no pinta nada por pantalla
     //si ya hay un porcentaje y contiene el signo porcentaje no pinte nada
-    if (valor === "%" && data.operacion.includes("%")) return; 
+    if (valor === "%" && data.operacion.includes("%")) return;
 
-    if(data.operacion.includes("Error") && valor !=='='&& valor !=='C'){// si ya ha tenido un error anteriormente 
-        //cambia el valor de data operacion por el valor por el valor que recibe y limpia resultado
-        setData({operacion:valor, resultado:""});
-        return;
-    }//si ya ha realizado alguna operación 
-    else if(data.resultado!=="" && esOperacion){
-        setData({
-            ...data,
-            operacion: data.resultado + valor,//coge el valor que hay en resultado y realiza la operacion siguiente
-           
-          });
-          return;
+    if (data.operacion.includes("Error") && valor !== "=" && valor !== "C") {
+      // si ya ha tenido un error anteriormente
+      //cambia el valor de data operacion por el valor por el valor que recibe y limpia resultado
+      setData({ operacion: valor, resultado: "" });
+      return;
+    } //si ya ha realizado alguna operación
+    else if (data.resultado !== "" && esOperacion) {
+      setData({
+        ...data,
+        operacion: data.resultado + valor, //coge el valor que hay en resultado y realiza la operacion siguiente
+      });
+      return;
     }
-    if (valor === "+/-" && data.operacion !== "") {//si se pulsa el boton +/- y hay un numero 
-        if(data.operacion.slice(0,1)==='-'){//si el valor es negativo lo cambia a positivo
-            setData({
-                ...data,
-                operacion: data.operacion.slice(1, data.operacion.length),
-              });
-        }else{//si el valor es positivo lo cambia a negativo
-            setData({
-                ...data,
-                operacion: '-'+data.operacion,//agrega el signo menos al inicio de la cadena 
-              });
-        }
+    if (valor === "+/-" && data.operacion !== "") {
+      //si se pulsa el boton +/- y hay un numero
+      if (data.operacion.slice(0, 1) === "-") {
+        //si el valor es negativo lo cambia a positivo
+        setData({
+          ...data,
+          operacion: data.operacion.slice(1, data.operacion.length),
+        });
+      } else {
+        //si el valor es positivo lo cambia a negativo
+        setData({
+          ...data,
+          operacion: "-" + data.operacion, //agrega el signo menos al inicio de la cadena
+        });
+      }
     } else {
       //setData({...data})=>copia lo que tenga data exactamente hasta ese punto
       /**
@@ -90,17 +94,20 @@ const Calculadora = () => {
     try {
       //en try el codigo que quiero que se realice si todo está correcto
       let resultado; //eval(data.operacion);=> ya realiza la operación pero no realiza porcentajes
-      if(data.operacion.includes("%")){//si la operación es porcentaje
-        const valores =data.operacion.split("%");//se separa por el porcentaje y se obtienen los dos valores
-        resultado = eval(`${valores[0]} * (${valores[1]} / 100)`);//se realiza la operación en la cadena
-      }else{//si no 
+      if (data.operacion.includes("%")) {
+        //si la operación es porcentaje
+        const valores = data.operacion.split("%"); //se separa por el porcentaje y se obtienen los dos valores
+        resultado = eval(`${valores[0]} * (${valores[1]} / 100)`); //se realiza la operación en la cadena
+      } else {
+        //si no
         resultado = eval(data.operacion);
       }
       //se actualiza setData resultado con la variable resultado
       //se actualiza setData operacion para que si hay un resultado se puedan seguir haciendo operaciones
       setData({
         ...data,
-        resultado,operacion:""
+        resultado,
+        operacion: "",
       });
     } catch (error) {
       //el mensaje que dará si hay un error Ej: 8*9+= Error
@@ -112,6 +119,7 @@ const Calculadora = () => {
   };
   return (
     <main>
+      <Switch />
       <span className="resultado">{data.resultado}</span>
       <span className="display">{data.operacion}</span>
       {/**parametros que pasa al componente "Boton" */}

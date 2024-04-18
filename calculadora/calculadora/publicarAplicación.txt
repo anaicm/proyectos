@@ -1,0 +1,14 @@
+vercel.com
+
+Vercel => Herramienta para realizar del deploit de las aplicaciones.
+
+instalacion en el pc (terminal a nivel global)
+
+en el proyecto comando Vercel y continuar con github, a continuación "Y" (si)
+
+aparece mi cuenta ana's => intro => no => no => nombre para el proyecto (minuscula) => intro
+
+ya en Overview () aparece el nuevo proyecto subido, click en el proyecto para abrirlo y se coge la 
+
+url https://calculadora-gmqhaileg-anas-projects-ea872702.vercel.app/
+

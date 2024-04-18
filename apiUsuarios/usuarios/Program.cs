@@ -7,6 +7,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<DataContext>
+(options=>options.UseSqlServer
+(@"Data Source=PORTATIL\SQLEXPRESS;Initial Catalog=biblioteca;User Id=sa;Password=rootadmin;Encrypt=false"));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,3 +1,7 @@
+
+using apiUsuarios.data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,9 +11,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<DataContext>
+// AddDbContext => añade el contexto que se esta usando en <UsersContext> que es el acceso a la BD a las tabla que se definen
+// en <UsersContext> usando sqlServer con la cadena de conexion.
+builder.Services.AddDbContext<UsersContext>
 (options=>options.UseSqlServer
-(@"Data Source=PORTATIL\SQLEXPRESS;Initial Catalog=biblioteca;User Id=sa;Password=rootadmin;Encrypt=false"));
+(@"Data Source=PORTATIL\SQLEXPRESS;Initial Catalog=login;User Id=sa;Password=rootadmin;Encrypt=false"));
+//--- si hay que añadir mas contextos para consultar cada tabla
+//builder.Services.AddDbContext<CochesContext>
+//(options => options.UseSqlServer
+//(@"Data Source=PORTATIL\SQLEXPRESS;Initial Catalog=login;User Id=sa;Password=rootadmin;Encrypt=false"));
 
 var app = builder.Build();
 

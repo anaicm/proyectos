@@ -28,6 +28,17 @@ public class CochesController : ControllerBase
         return Ok(_cochesContext.Coches);
     }
 
+    [HttpGet("{id}")] // Especificamos que este endpoint espera un parámetro llamado "id" en la URL
+    public async Task<ActionResult<Coche>> Get(Guid id)//Coche=> nombre de la clase entidades/Coche
+    {
+        var coche = await _cochesContext.Coches.FindAsync(id);//Coches=> nombre de la función get y set en la clase data/CochesContext
+        if (coche == null)
+        {
+            return NotFound();
+        }
+        return coche;
+    }
+
 
     [HttpPost]//añadir
     public IActionResult Add(string color, string modelo)//parametros que entra son los campos que se han añadido a la tabla en la clase entidades

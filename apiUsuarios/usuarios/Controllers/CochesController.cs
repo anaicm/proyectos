@@ -8,7 +8,7 @@ namespace apiUsuarios.data;
 [ApiController]
 [Route("[controller]")]
 
-// MueblesController=> nombre que le pongo yo a la clase 
+// CochesController=> nombre que le pongo yo a la clase 
 
 public class CochesController : ControllerBase
 {

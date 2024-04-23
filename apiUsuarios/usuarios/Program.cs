@@ -17,9 +17,17 @@ builder.Services.AddDbContext<UsersContext>
 (options=>options.UseSqlServer
 (@"Data Source=PORTATIL\SQLEXPRESS;Initial Catalog=login;User Id=sa;Password=rootadmin;Encrypt=false"));
 //--- si hay que añadir mas contextos para consultar cada tabla
-//builder.Services.AddDbContext<CochesContext>
-//(options => options.UseSqlServer
-//(@"Data Source=PORTATIL\SQLEXPRESS;Initial Catalog=login;User Id=sa;Password=rootadmin;Encrypt=false"));
+builder.Services.AddDbContext<CochesContext>
+(options => options.UseSqlServer
+(@"Data Source=PORTATIL\SQLEXPRESS;Initial Catalog=login;User Id=sa;Password=rootadmin;Encrypt=false"));
+//--- si hay que añadir mas contextos para consultar cada tabla
+builder.Services.AddDbContext<MueblesContext>
+(options => options.UseSqlServer
+(@"Data Source=PORTATIL\SQLEXPRESS;Initial Catalog=login;User Id=sa;Password=rootadmin;Encrypt=false"));
+//--- si hay que añadir mas contextos para consultar cada tabla
+builder.Services.AddDbContext<CasasContext>
+(options => options.UseSqlServer
+(@"Data Source=PORTATIL\SQLEXPRESS;Initial Catalog=login;User Id=sa;Password=rootadmin;Encrypt=false"));
 
 var app = builder.Build();
 

@@ -1,4 +1,4 @@
-using apiUsuarios.data;
+using apiUsuarios.entidades;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,27 +12,28 @@ namespace apiUsuarios.data;
 
 public class UsuariosController : ControllerBase
 {
+    //Ilogger => normalmente esta en todos los controllers, se usa para guardar trazas o logs que guarda información, como es 
+    //que usuario ha realizado la petinción, ip, al método al que entra y con que parámetros o la fecha entre otros.
     private readonly ILogger<UsuariosController> _logger;
-    private readonly UsersContext _usersContext;
     //userManager => Realiza el CRUD de los usuarios
-    private readonly UserManager<IdentityUser> _userManager;//usuarios
+    //como se ha configurado el user manger en program con la clase Usuario que tiene los campos añidos, es de tipo "Usuario" clase 
+    //con los campos 
+    private readonly UserManager<Usuario> _userManager;//usuarios
 
-    public UsuariosController(ILogger<UsuariosController> logger, UsersContext usersContext, UserManager<IdentityUser> userManager)
+    public UsuariosController(ILogger<UsuariosController> logger, UserManager<Usuario> userManager)
     {
         _logger = logger;
-        _usersContext = usersContext;
         _userManager = userManager;
     }
 
     [HttpGet]
     public IActionResult Get()
     {
+        //_logger => es donde hago las peticiones para guardar las trazas, en este caso es de tipo informacion y da el dia y la hora
+        //siempre es un String.
         _logger.Log(LogLevel.Information, "GetUsers:" + DateTime.Now);
-        foreach(var user in _usersContext.Users)
-        {
-
-        }
-        return Ok(_usersContext.Users);
+        var users = _userManager.Users;//guarda todos los registos que hay en la tabla usuarios (array de usuarios)
+        return Ok(users);
     }
     [HttpPost]//añadir registro
     public async Task<ActionResult> Add(string username, string password)
@@ -40,7 +41,7 @@ public class UsuariosController : ControllerBase
         // var authenticatedUserName = HttpContext.User.Identity.Name; => obtiene el nombre del usuario por la cookies
         // var user = _userContext.FindByNameAsync(authenticatedUserName); => Devuelve el usuario en el que coincide el nombre
 
-        var user = new IdentityUser
+        var user = new Usuario
         {
             UserName = username,
             Email = username

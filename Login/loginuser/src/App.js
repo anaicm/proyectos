@@ -1,11 +1,18 @@
+import "./App.css";
+import FormLogin from "./Componentes/FormLogin";
+import Head from "./Componentes/Head";
 
-import './App.css';
 
 function App() {
   return (
-    <div>
-     
-    </div>
+    <>
+      <header>
+        <Head />
+      </header>
+      <main>
+        <FormLogin />
+      </main>
+    </>
   );
 }
 

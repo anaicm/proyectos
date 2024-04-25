@@ -1,0 +1,69 @@
+.main {
+    position: absolute;
+    top: 50%; /* Centrar verticalmente */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translate(-50%, -50%); /* Centrar horizontal y verticalmente */
+    background-color: var(--terciario);
+    aspect-ratio: 8.7/16; /* Mantener el aspecto */
+    border-bottom: 1rem;
+    width: 300px;
+    height: 30vh; /* Reducir la altura a un 60% de la altura de la ventana */
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    border-radius: 1rem;
+    
+}
+
+
+.containerFlex{
+    display: flex;
+    justify-content: center;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+ 
+}
+input {
+  margin-bottom: 2rem;
+  color: var(--secundario);
+  font-size: 1.5rem;
+  height: 2.5rem;
+  border: 1px solid transparent; /* Establecer un borde transparente */
+    
+  }
+  input:focus {
+    color: var(--texto);
+    transform: scale(1.05);/*agranda el tamaño*/
+    box-shadow: var(--box-shadow)/* pone sombra */;
+    background-color:var(--secundario) ;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+   
+    
+    
+  }
+  button {
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--primario);
+    font-size: 1.5rem; /* Tamaño de fuente ajustado */
+    height: 2.5rem; /* Altura ajustada */
+    width: 100%; /* El botón ocupará todo el ancho del contenedor */
+    aspect-ratio: 1 / 1;
+    margin-bottom: 1rem; /* Agregar margen inferior de 1 rem */
+    
+    color: var(--terciario);
+}
+
+/* Cuando el botón se encuentre activo se le ha hecho clic encima */
+button:active {
+    transform: scale(1.02);
+}
+@media screen and (max-width: 768px) {
+    .main {
+        height: 45vh; 
+      
+    
+    }
+  }

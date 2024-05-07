@@ -4,6 +4,7 @@ using apiUsuarios.entidades;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,6 +67,20 @@ builder.Services.Configure<CookieAuthenticationOptions>(IdentityConstants.Applic
     };
 
     options.AccessDeniedPath = "/index.html";
+});
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiPlayground", Version = "v1" });
+
+    // Agrega la definición de seguridad para cookies
+    c.AddSecurityDefinition("cookie", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.Http,
+        Scheme = CookieAuthenticationDefaults.AuthenticationScheme, // Utiliza el esquema de autenticación por cookies
+        Name = "NombreDeLaCookie", // Nombre de la cookie que se utilizará para almacenar la información de autenticación
+        In = ParameterLocation.Cookie, // Especifica que la información de autenticación se enviará en una cookie
+    });
 });
 
 var app = builder.Build();
